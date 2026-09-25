@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import ProductsList from './components/ProductsList';
 import CategoryFilter from './components/CategoryFilter';
 import SearchBar from './components/SearchBar';
@@ -218,14 +218,23 @@ const initialProducts = [
 
 const App = () => {
 
-
   const [products, setProducts] = useState(initialProducts)
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
 
 
-  const filteredProducts = category === "All" ? products : products.filter((prod) => prod.category === category)
 
+  const filteredProducts = products.filter((product) => {
+
+    const matchesCategory = product.category === category || category === "All"
+    const matchesSearch = product.name.toLowerCase().includes(search.toLowerCase())
+
+    return matchesCategory && matchesSearch
+
+  })
+
+
+  console.log(filteredProducts);
 
 
   return (
@@ -241,9 +250,6 @@ const App = () => {
         </h1>
       </div>
       <ProductsList products={filteredProducts} />
-
-
-
     </div>
   )
 }
