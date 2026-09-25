@@ -233,7 +233,7 @@ const App = () => {
       <h1 className=' text-4xl font-bold mb-10 '>
         Procut Management Dashboard
       </h1>
-      <div className=' flex justify-between'>
+      <div className=' flex justify-between items-center'>
         <CategoryFilter category={category} setCategory={setCategory} />
         <SearchBar search={search} setSearch={setSearch} />
         <h1 className=' font-bold'>
