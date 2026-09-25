@@ -224,6 +224,11 @@ const App = () => {
 
 
 
+  const deleteProduct = (id) => {
+    setProducts(products.filter((prod) => prod.id !== id))
+  }
+
+
   const filteredProducts = products.filter((product) => {
 
     const matchesCategory = product.category === category || category === "All"
@@ -249,7 +254,7 @@ const App = () => {
           Total Products : {filteredProducts.length}
         </h1>
       </div>
-      <ProductsList products={filteredProducts} />
+      <ProductsList onDelete={deleteProduct} products={filteredProducts} />
     </div>
   )
 }
